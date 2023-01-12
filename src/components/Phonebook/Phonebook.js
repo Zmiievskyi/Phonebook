@@ -1,26 +1,27 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Box, Button, Label } from 'components/Common/Common.styled';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { useAddContactMutation } from 'redux/operations';
+// import { addContact } from 'redux/phonebookSlice';
+import { addContact } from 'redux/operations';
 
 let schema = yup.object().shape({
   name: yup.string().min(4).max(12).required(),
   phone: yup.number().required(),
 });
 
-const initialValues = {
-  name: '',
-  phone: '',
+
+const initialValues = { 
+  name: '', 
+  phone: '' 
 };
 
 const Phonebook = () => {
-  const [addContact, {isLoading}] = useAddContactMutation();
-  // const dispatch = useDispatch();
 
-  const handleSubmit =  async (value, actions) => {
-    
-    await addContact(value);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (value, actions) => {
+    dispatch(addContact(value));
     actions.resetForm();
   };
 
@@ -39,12 +40,18 @@ const Phonebook = () => {
         <Form autoComplete="off">
           <Label>
             Name
-            <Field type="text" name="name" />
+            <Field
+              type="text"
+              name="name"
+            />
             <ErrorMessage name="name" />
           </Label>
           <Label>
             Number
-            <Field type="tel" name="phone" />
+            <Field
+              type="tel"
+              name="phone"
+            />
             <ErrorMessage name="phone" />
           </Label>
           <Button type="submit">Add contact</Button>
