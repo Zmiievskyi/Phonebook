@@ -12,9 +12,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SignIn />} />
-        <Route path="goit-react-hw-08-phonebook/signup" element={<SignUp />} />
+        <Route path="/ggoit-react-hw-08-phonebook/signup" element={<SignUp />} />
         <Route
-          path="goit-react-hw-08-phonebook/contacts"
+          path="/goit-react-hw-08-phonebook/contacts"
           element={<Contacts />}
         />
         <Route path="*" element={<div>404</div>} />
