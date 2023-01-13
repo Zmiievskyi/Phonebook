@@ -1,12 +1,10 @@
 import React from "react";
 // import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import Contacts from "../Pages/Contacts";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
-import { getIsLogin } from "../redux/auth/selectors";
 
 function App() {
   

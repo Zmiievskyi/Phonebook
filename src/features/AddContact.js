@@ -5,7 +5,7 @@ import * as yup from "yup";
 // import TextField from "@material-ui/core/TextField";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addContact } from "../redux/contacts/operations";
 
 const validationSchema = yup.object({
