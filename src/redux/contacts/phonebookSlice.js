@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchContacts, addContact, deleteContact } from "./operations";
+import { refreshUser } from "../auth/operations";
 
 export const phonebookSlice = createSlice({
-  name: 'phonebook',
+  name: "phonebook",
 
   initialState: {
     contacts: {
@@ -10,7 +11,8 @@ export const phonebookSlice = createSlice({
       isLoading: false,
       error: null,
     },
-    filter: '',
+    filter: "",
+    isOpenModal: false,
   },
 
   extraReducers: {
@@ -21,6 +23,7 @@ export const phonebookSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
+      console.log(action.payload);
       state.contacts.items = action.payload;
     },
     [fetchContacts.rejected](state, action) {
@@ -34,8 +37,9 @@ export const phonebookSlice = createSlice({
     [addContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
-      state.contacts.items = [action.payload, ...state.contacts.items];
+      state.isOpenModal = false;
       console.log(action.payload);
+      state.contacts.items = [action.payload, ...state.contacts.items];
     },
     [addContact.rejected](state, action) {
       state.contacts.isLoading = false;
@@ -48,25 +52,32 @@ export const phonebookSlice = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
-       const index = state.contacts.items.findIndex(
-         contact => contact.id === action.payload.id);
-       state.contacts.items.splice(index, 1);
+      const index = state.contacts.items.findIndex(
+        (contact) => contact.id === action.payload.id
+      );
+      state.contacts.items.splice(index, 1);
     },
     [deleteContact.rejected](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = action.payload;
+    },
+
+    [refreshUser.fulfilled](state, action) {
+      state.contacts.items = action.payload;
     },
     //------------------------------------------
   },
 
   reducers: {
     setFilter: (state, action) => {
-      console.log(action.payload);
       state.filter = action.payload;
+    },
+    setModal: (state, action) => {
+      state.isOpenModal = !state.isOpenModal;
     },
   },
 });
 
-export const {setFilter } = phonebookSlice.actions;
+export const { setFilter, setModal } = phonebookSlice.actions;
 
 export const phonebookReducer = phonebookSlice.reducer;
