@@ -1,13 +1,15 @@
-import React from "react";
-// import { lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+// import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import SignIn from 'Pages/SignIn';
+import Contacts from '../Pages/Contacts';
+import SignUp from '../Pages/SignUp';
 
-import Contacts from "../Pages/Contacts";
-import SignIn from "../Pages/SignIn";
-import SignUp from "../Pages/SignUp";
+// const Contacts = lazy(() => import('../Pages/Contacts'));
+// const SignIn = lazy(() => import('../Pages/SignIn'));
+// const SignUp = lazy(() => import('../Pages/SignUp'));
 
 function App() {
-  
   return (
     <>
       <Routes>

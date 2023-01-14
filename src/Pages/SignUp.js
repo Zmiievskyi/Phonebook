@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { signUp } from '../redux/auth/operations';
 import { getIsLogin } from '../redux/auth/selectors';
@@ -101,9 +101,9 @@ export default function SignUp() {
           </Button>
           <Grid container justifyContent="space-between">
             <Grid item>
-              <Link href="/goit-react-hw-08-phonebook" variant="body2">
+              <NavLink to="/login" variant="body2">
                 Already have an account? Sign in
-              </Link>
+              </NavLink>
             </Grid>
           </Grid>
         </Box>
