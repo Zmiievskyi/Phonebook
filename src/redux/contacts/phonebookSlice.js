@@ -3,7 +3,7 @@ import { fetchContacts, addContact, deleteContact } from "./operations";
 import { refreshUser } from "../auth/operations";
 
 export const phonebookSlice = createSlice({
-  name: "phonebook",
+  name: 'phonebook',
 
   initialState: {
     contacts: {
@@ -11,7 +11,7 @@ export const phonebookSlice = createSlice({
       isLoading: false,
       error: null,
     },
-    filter: "",
+    filter: '',
     isOpenModal: false,
   },
 
@@ -53,7 +53,7 @@ export const phonebookSlice = createSlice({
       state.contacts.isLoading = false;
       state.contacts.error = null;
       const index = state.contacts.items.findIndex(
-        (contact) => contact.id === action.payload.id
+        contact => contact.id === action.payload.id
       );
       state.contacts.items.splice(index, 1);
     },

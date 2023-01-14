@@ -45,12 +45,12 @@ export default function SignUp() {
       <Box
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -102,13 +102,8 @@ export default function SignUp() {
           </Button>
           <Grid container justifyContent="space-between">
             <Grid item>
-              <Link href="/" variant="body2">
+              <Link href="/goit-react-hw-08-phonebook" variant="body2">
                 Already have an account? Sign in
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/contacts" variant="body2">
-                Demo
               </Link>
             </Grid>
           </Grid>

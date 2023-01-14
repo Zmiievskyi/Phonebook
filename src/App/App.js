@@ -12,11 +12,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SignIn />} />
-        <Route path="/ggoit-react-hw-08-phonebook/signup" element={<SignUp />} />
-        <Route
-          path="/goit-react-hw-08-phonebook/contacts"
-          element={<Contacts />}
-        />
+        {/* <Route index element={<SignIn />} /> */}
+
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/contacts" element={<Contacts />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </>

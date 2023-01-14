@@ -14,15 +14,12 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../redux/auth/operations";
 import { getIsLogin } from "../redux/auth/selectors";
 
-
-
-
 export default function SignIn() {
     
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector(getIsLogin);
-
+  
   React.useEffect(() => {
     if (isLogin) {
       navigate("/contacts", { replace: true });
@@ -46,12 +43,12 @@ export default function SignIn() {
       <Box
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -89,7 +86,7 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link href="/goit-react-hw-08-phonebook/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

@@ -22,6 +22,24 @@ const StyledFab = styled(Fab)({
   margin: "0 auto",
 });
 
+const contactsDemo = [
+  {
+    id: 1,
+    name: 'Олександр Репета',
+    number: 111,
+  },
+  {
+    id: 2,
+    name: 'Рустам Асланов',
+    number: 911,
+  },
+  {
+    id: 3,
+    name: 'GoIT',
+    number: '050 366 17 77',
+  },
+];
+
 export default function BottomAppBar() {
   const dispatch = useDispatch();
   
