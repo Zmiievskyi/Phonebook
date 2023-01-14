@@ -10,6 +10,7 @@ import { setAuthHeader } from "../auth/operations";
 
 // const clearAuthHeader = () => {
 //   axios.defaults.headers.common.Authorization = '';
+
 // };
 
 export const fetchContacts = createAsyncThunk(

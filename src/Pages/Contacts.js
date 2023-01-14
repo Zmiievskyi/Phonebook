@@ -12,25 +12,7 @@ import BottomAppBar from '../Components/AppBar/AppBar';
 import { getContacts, getSearchName } from '../redux/contacts/selectors';
 import { getIsLogin, getUser } from '../redux/auth/selectors';
 import BasicModal from '../features/Modal';
-import { deleteContact, addContact } from '../redux/contacts/operations';
-
-const contactsDemo = [
-  {
-    id: 1,
-    name: 'Олександр Репета',
-    number: 111,
-  },
-  {
-    id: 2,
-    name: 'Рустам Асланов',
-    number: 911,
-  },
-  {
-    id: 3,
-    name: 'GoIT',
-    number: '050 366 17 77',
-  },
-];
+import { deleteContact } from '../redux/contacts/operations';
 
 export default function Contacts() {
   const isLogin = useSelector(getIsLogin);
