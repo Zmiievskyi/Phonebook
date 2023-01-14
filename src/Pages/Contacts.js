@@ -12,7 +12,25 @@ import BottomAppBar from '../Components/AppBar/AppBar';
 import { getContacts, getSearchName } from '../redux/contacts/selectors';
 import { getIsLogin, getUser } from '../redux/auth/selectors';
 import BasicModal from '../features/Modal';
-import { deleteContact } from '../redux/contacts/operations';
+import { addContact, deleteContact } from '../redux/contacts/operations';
+
+let contactsDemo = [
+  {
+    id: 1,
+    name: 'Олександр Репета',
+    number: 111,
+  },
+  {
+    id: 2,
+    name: 'Рустам Асланов',
+    number: 911,
+  },
+  {
+    id: 3,
+    name: 'GoIT',
+    number: '050 366 17 77',
+  },
+];
 
 export default function Contacts() {
   const isLogin = useSelector(getIsLogin);
@@ -28,6 +46,11 @@ export default function Contacts() {
     }
   }, [isLogin, navigate]);
 
+  React.useEffect(() => {
+    contactsDemo.map(contact => dispatch(addContact(contact)));
+    contactsDemo = [];
+  }, [dispatch]);
+
   const filtredList = contactList.items.filter(contact =>
     contact.name.toLowerCase().includes(search)
   );
@@ -35,7 +58,6 @@ export default function Contacts() {
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <Paper square sx={{ pb: "50px" }}> */}
       <ListSubheader sx={{ bgcolor: 'background.paper' }}>
         {`${name}'s phone book`}
       </ListSubheader>
@@ -44,7 +66,6 @@ export default function Contacts() {
           <React.Fragment key={id}>
             <ListItem>
               <ListItemAvatar>
-                {/* <Avatar alt="Profile Picture" src={person} /> */}
                 <button
                   type="button"
                   onClick={() => {
@@ -59,7 +80,6 @@ export default function Contacts() {
           </React.Fragment>
         ))}
       </List>
-      {/* </Paper> */}
       <BottomAppBar />
       <BasicModal />
     </React.Fragment>
