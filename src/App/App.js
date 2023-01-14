@@ -17,7 +17,7 @@ function App() {
         <Route index element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/contacts" element={<Contacts />} />
-        {/* <Route path="*" element={<div>404</div>} /> */}
+        <Route path="*" element={<div>404</div>} />
       </Routes>
     </>
   );
