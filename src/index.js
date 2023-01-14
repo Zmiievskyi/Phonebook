@@ -14,23 +14,23 @@ import { theme } from "./theme";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
-const contactsDemo = [
-  {
-    id: 1,
-    name: 'Олександр Репета',
-    number: 111,
-  },
-  {
-    id: 2,
-    name: 'Рустам Асланов',
-    number: 911,
-  },
-  {
-    id: 3,
-    name: 'GoIT',
-    number: '050 366 17 77',
-  },
-];
+// const contactsDemo = [
+//   {
+//     id: 1,
+//     name: 'Олександр Репета',
+//     number: 111,
+//   },
+//   {
+//     id: 2,
+//     name: 'Рустам Асланов',
+//     number: 911,
+//   },
+//   {
+//     id: 3,
+//     name: 'GoIT',
+//     number: '050 366 17 77',
+//   },
+// ];
 
 
 
