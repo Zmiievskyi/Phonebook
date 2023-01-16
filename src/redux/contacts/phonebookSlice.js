@@ -7,23 +7,7 @@ export const phonebookSlice = createSlice({
 
   initialState: {
     contacts: {
-      items: [
-  {
-    id: 1,
-    name: 'Олександр Репета',
-    number: 111,
-  },
-  {
-    id: 2,
-    name: 'Рустам Асланов',
-    number: 911,
-  },
-  {
-    id: 3,
-    name: 'GoIT',
-    number: '050 366 17 77',
-  },
-],
+      items: [],
       isLoading: false,
       error: null,
     },
@@ -48,7 +32,6 @@ export const phonebookSlice = createSlice({
     //----------------------------------------
     [addContact.pending](state) {
       state.contacts.isLoading = true;
-       state.contacts.items = []
     },
     [addContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
