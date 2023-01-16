@@ -33,11 +33,11 @@ export default function BottomAppBar() {
   };
 
   return (
-    <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+    <AppBar position="fixed" color="ua" sx={{ top: 'auto', bottom: 0 }}>
       <Toolbar>
         <LoadingButton
           variant="outlined"
-          color="neutral"
+          color="uab"
           loading={isDelete}
           onClick={() => {
             dispatch(logOut());

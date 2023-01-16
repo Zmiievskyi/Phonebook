@@ -39,7 +39,7 @@ export default function Contacts() {
     <React.Fragment>
       <CssBaseline />
       <ListSubheader
-        sx={{ bgcolor: '#9c27b0', color: 'white', fontSize: '16px' }}
+        sx={{ bgcolor: '#6495ED', color: 'white', fontSize: '16px' }}
       >
         {`${firstName}'s phone book`}
       </ListSubheader>
