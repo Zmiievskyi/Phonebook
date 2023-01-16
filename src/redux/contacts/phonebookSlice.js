@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./operations";
-import { refreshUser } from "../auth/operations";
+import { logOut, refreshUser } from "../auth/operations";
 
 export const phonebookSlice = createSlice({
   name: 'phonebook',
@@ -23,7 +23,6 @@ export const phonebookSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
-      console.log(action.payload);
       state.contacts.items = action.payload;
     },
     [fetchContacts.rejected](state, action) {
@@ -38,7 +37,6 @@ export const phonebookSlice = createSlice({
       state.contacts.isLoading = false;
       state.contacts.error = null;
       state.isOpenModal = false;
-      console.log(action.payload);
       state.contacts.items = [action.payload, ...state.contacts.items];
     },
     [addContact.rejected](state, action) {
@@ -62,8 +60,8 @@ export const phonebookSlice = createSlice({
       state.contacts.error = action.payload;
     },
 
-    [refreshUser.fulfilled](state, action) {
-      state.contacts.items = action.payload;
+    [logOut.fulfilled](state, action) {
+      state.contacts.items = [];
     },
     //------------------------------------------
   },

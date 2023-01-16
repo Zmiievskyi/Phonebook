@@ -1,37 +1,40 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import { login } from "../redux/auth/operations";
-import { getIsLogin } from "../redux/auth/selectors";
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { login } from '../redux/auth/operations';
+import { getError, getIsLogin } from '../redux/auth/selectors';
 
 export default function SignIn() {
-    
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector(getIsLogin);
-  
+  const isError = useSelector(getError);
+
   React.useEffect(() => {
     if (isLogin) {
-      navigate("/contacts", { replace: true });
+      navigate('/contacts', { replace: true });
     }
-  }, [isLogin, navigate]);
+    if (isError){
+       alert('wrong password!!!')
+    }
+  }, [isLogin,isError, navigate]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     dispatch(
       login({
-        email: data.get("email"),
-        password: data.get("password"),
+        email: data.get('email'),
+        password: data.get('password'),
       })
     );
   };
