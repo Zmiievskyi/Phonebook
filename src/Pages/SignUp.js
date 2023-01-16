@@ -14,23 +14,23 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { signUp } from '../redux/auth/operations';
 import { getIsLogin } from '../redux/auth/selectors';
 
-let contactsDemo = [
-  {
-    id: 1,
-    name: 'Олександр Репета',
-    number: 111,
-  },
-  {
-    id: 2,
-    name: 'Рустам Асланов',
-    number: 911,
-  },
-  {
-    id: 3,
-    name: 'GoIT',
-    number: '050 366 17 77',
-  },
-];
+// let contactsDemo = [
+//   {
+//     id: 1,
+//     name: 'Олександр Репета',
+//     number: 111,
+//   },
+//   {
+//     id: 2,
+//     name: 'Рустам Асланов',
+//     number: 911,
+//   },
+//   {
+//     id: 3,
+//     name: 'GoIT',
+//     number: '050 366 17 77',
+//   },
+// ];
 
 export default function SignUp() {
   const dispatch = useDispatch();
