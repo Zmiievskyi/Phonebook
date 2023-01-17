@@ -1,28 +1,35 @@
-import React from "react";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { useDispatch } from "react-redux";
-import { addContact } from "../redux/contacts/operations";
+import React from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { editContact } from '../redux/contacts/operations';
 
 const validationSchema = yup.object({
-  name: yup.string("Enter name").required("Name is required"),
-  number: yup.number("Enter phone number").required("Phone number is required"),
+  name: yup.string('Enter name').required('Name is required'),
+  number: yup.number('Enter phone number').required('Phone number is required'),
 });
 
-export const AddContact = () => {
-
+export const EditContact = () => {
   const dispatch = useDispatch();
+  const contact = useSelector(state => state.phonebook.contacts.id);
+
   const formik = useFormik({
     initialValues: {
-      name: "",
-      number: "",
+      name: contact.name,
+      number: contact.number,
     },
     validationSchema: validationSchema,
 
-    onSubmit: (values) => {
-      dispatch(addContact(values));
+    onSubmit: values => {
+      dispatch(
+        editContact({
+          id: contact.id,
+          name: values.name,
+          number: values.number,
+        })
+      );
     },
   });
 
@@ -52,7 +59,7 @@ export const AddContact = () => {
           helperText={formik.touched.number && formik.errors.number}
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
-          Add
+          Edit
         </Button>
       </form>
     </div>

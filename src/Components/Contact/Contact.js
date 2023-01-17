@@ -4,15 +4,20 @@ import ListItemText from '@mui/material/ListItemText';
 import { useDispatch } from 'react-redux';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { deleteContact } from '../../redux/contacts/operations';
+import { edit } from 'redux/contacts/phonebookSlice';
 
-export const Contact = ({ primary, secondary, id }) => {
+export const Contact = ({ primary, secondary, contact }) => {
   const [loading, setLoading] = React.useState(false);
-  const handleClick = async () => {
-    setLoading(true)
-    await dispatch(deleteContact(id));
-    setLoading(false)
+
+  const handleDelete = async () => {
+    setLoading(true);
+    await dispatch(deleteContact(contact.id));
+    setLoading(false);
   };
 
+  const handleEdit = () => {
+    dispatch(edit(contact));
+  };
 
   const dispatch = useDispatch();
   return (
@@ -22,14 +27,24 @@ export const Contact = ({ primary, secondary, id }) => {
           <LoadingButton
             sx={{ margin: 2 }}
             size="small"
-            onClick={handleClick}
+            onClick={handleEdit}
+            loading={loading}
+            variant="outlined"
+            disabled={loading}
+          >
+            <span>edit</span>
+          </LoadingButton>
+          <ListItemText primary={primary} secondary={secondary} />
+          <LoadingButton
+            sx={{ margin: 2 }}
+            size="small"
+            onClick={handleDelete}
             loading={loading}
             variant="outlined"
             disabled={loading}
           >
             <span>delete</span>
           </LoadingButton>
-          <ListItemText primary={primary} secondary={secondary} />
         </ListItem>
       </React.Fragment>
     </>

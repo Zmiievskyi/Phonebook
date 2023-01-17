@@ -1,6 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./operations";
-import { logOut } from "../auth/operations";
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './operations';
+import { logOut } from '../auth/operations';
 
 export const phonebookSlice = createSlice({
   name: 'phonebook',
@@ -10,6 +15,8 @@ export const phonebookSlice = createSlice({
       items: [],
       isLoading: false,
       error: null,
+      isEdit: false,
+      id: '',
     },
     filter: '',
     isOpenModal: false,
@@ -60,6 +67,14 @@ export const phonebookSlice = createSlice({
       state.contacts.error = action.payload;
     },
 
+    [editContact.fulfilled](state, action) {
+      state.contacts.isEdit = false;
+      state.isOpenModal = false;
+      const index = state.contacts.items.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.contacts.items.splice(index, 1, action.payload);
+    },
     [logOut.fulfilled](state, action) {
       state.contacts.items = [];
     },
@@ -72,10 +87,17 @@ export const phonebookSlice = createSlice({
     },
     setModal: (state, action) => {
       state.isOpenModal = !state.isOpenModal;
+      state.contacts.isEdit = false;
+      state.contacts.id = action.payload;
+    },
+    edit: (state, action) => {
+      state.isOpenModal = !state.isOpenModal;
+      state.contacts.isEdit = true;
+      state.contacts.id = action.payload;
     },
   },
 });
 
-export const { setFilter, setModal } = phonebookSlice.actions;
+export const { setFilter, setModal, edit } = phonebookSlice.actions;
 
 export const phonebookReducer = phonebookSlice.reducer;

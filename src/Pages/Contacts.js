@@ -44,8 +44,13 @@ export default function Contacts() {
         {`${firstName}'s phone book`}
       </ListSubheader>
       <List sx={{ mb: 2 }}>
-        {filtredList?.map(({ id, name, number }) => (
-          <Contact key={id} primary={name} secondary={number} id={id} />
+        {filtredList?.map(contact => (
+          <Contact
+            key={contact.id}
+            primary={contact.name}
+            secondary={contact.number}
+            contact={contact}
+          />
         ))}
       </List>
       <BottomAppBar />
